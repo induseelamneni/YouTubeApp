@@ -50,9 +50,6 @@ const LiveChat = () => {
     },[])
     
 
-
-    console.log(liveMsg)
-
     return (
         <div className="flex flex-col w-[100%] h-[1500px]">
     <div  className=" border border-black-200 shadow-slate-lg border-rouded-lg bg-white-500 m-2 overflow-y-scroll flex flex-col-reverse">
