@@ -2,12 +2,16 @@ import {Link} from "react-router-dom"
 import React, { useEffect, useState } from "react"
 import { YOUTUBE_VEDIO_API } from "../utils/constants"
 import VideoCard from "./VideoCard"
-import { AddVideoCard } from "./VideoCard"
+import {useSelector} from "react-redux"
+import SideBar from "./SideBar"
 
-const VideoContainer = () => {
+const WatchSearchedVideo = () => {
     const [video, setVedio] = useState([])
     const [filtVideo , setFiltVideo] = useState(video)
 
+    const userSearch = useSelector((store) => store.searchBtn.searchedWord)
+    console.log(userSearch)
+   
     useEffect(() => {
         getVideos()
 
@@ -15,32 +19,33 @@ const VideoContainer = () => {
   
     const getVideos = async () => {
         const data = await fetch(YOUTUBE_VEDIO_API)
-    
         const videos = await data?.json()
-        // console.log(videos)
         setVedio(videos?.items)
-        setFiltVideo(videos?.items)
+        const filterDataBasedOnUserSearch = videos?.items.filter((result) => ((result.snippet.title).toLowerCase().includes(userSearch.toLowerCase())))
+        setFiltVideo(filterDataBasedOnUserSearch)
 
-    }
-
+    }   
+   
     return (
-       
-          
             <ul className="flex flex-row flex-wrap w-100">
-            {video[0] && <AddVideoCard info = {video[0]}/>}
+              
+                <SideBar/>
+                <div className="p-2 w-100 pl-[9rem] pt-[9rem]" >
+                
             {filtVideo.map((each) => (
+               
+                
+
                 <Link to ={"/watch?v="+ each.id} key={each.id}>
                     <VideoCard  info = {each} key={each.id} />
                
                 </Link>
+               
             ))}
-           
-
-            </ul>
-           
-
-      
+             </div>
+             
+            </ul>      
     )
 
 }
-export default VideoContainer
+export default WatchSearchedVideo

@@ -68,3 +68,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### seting up testing in this app
+
+-install React Testing library by using command   npm install --save-dev @testing-library/react
+-install jest by using command  npm install --save-dev jest
+-intialize jest by uising     npx jest --init
+-install jsdom by using command     npm install --save-dev jest-environment-jsdom
+
+-if we run npm run test will get error  `SyntaxError: /home/indu/Desktop/YOUTUBEAPP/my-app/src/components/__test__/Header.test.js: Support for the experimental syntax 'jsx' isn't currently enabled (9:5):` 
+-install @babel/preset-react --to make jsx work in the test cases
+-include @babel/preset-react inside my babel config
+

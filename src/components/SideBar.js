@@ -3,12 +3,10 @@ import {Link} from "react-router-dom"
 const SideBar = () => {
     const isMenuOpen = useSelector(store => store.app.isMenuOpen)
  
-     if (!isMenuOpen) return "";
+    if(!isMenuOpen) return( <div className="bg-white shadow-lg p-4 fixed " style={{marginTop:"90px", height:"100%"}}>hi</div>)
+ 
     return (
-    
-       
-            <div className="bg-white shadow-lg p-4 fixed " style={{marginTop:"90px", height:"100%"}}>
-            
+            <div className="bg-white shadow-lg p-4 fixed " style={{marginTop:"90px", height:"100%"}}>        
             <ul>
                <Link to="/"> <li>Home</li></Link>
                 <li>Shorts</li>
@@ -36,11 +34,7 @@ const SideBar = () => {
 
             </ul>
         </div>
-
-       
-        
     )
-
 }
 
 export default SideBar

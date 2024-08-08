@@ -1,47 +1,31 @@
-// import logo from './logo.svg';
+import {BrowserRouter,Routes,Route} from "react-router-dom"
 import {Provider} from "react-redux"
 import './App.css';
-// import Youtube from './components/Youtube';
-import {createBrowserRouter ,RouterProvider} from 'react-router-dom'
 import WatchPage from "./components/WatchPage"
 
 
 import store from './utils/store';
 import Header from "./components/Header";
-import MainContainer from "./components/MainContainer";
 import Body from "./components/Body";
+import WatchSearchedVideo from "./components/WatchSearchedVideo";
 
 
-const appRouter = createBrowserRouter([{
-  path:"/",
-  element:  <MainContainer/>,
-  children:[
-    {
-      path:"/",
-      element: <Body />
-    },
-    {
-      path:"watch",
-      element:<WatchPage />
-    },
-
-  ]
-
-},
-
-
-])
-
-function App() {
-  return (
+function App(){
+  return(
+    <>
+    <BrowserRouter>
     <Provider store = {store}>
-       <Header />
-      
-    <div >
-      <RouterProvider  router={appRouter} />
-    </div>
-    </Provider>
-  );
+        <Header />
+        <Routes>
+          <Route path='/' element={<Body />} />
+          <Route path='/watch' element={<WatchPage />} />
+          <Route path="/results" element={<WatchSearchedVideo/>}/>
+        </Routes>
+        </Provider>
+
+      </BrowserRouter>
+      </>
+  )
 }
 
 export default App;

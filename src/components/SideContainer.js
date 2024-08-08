@@ -21,29 +21,15 @@ const SideContainer= () =>  {
         setVedio(videos.items)
     }
  
-
     return (
-       
-      
             <ul className="m-3">
-               
-           
             {video.map((each) => (
                 <Link to ={"/watch?v="+ each.id}>
                     <SideVideoCard  info = {each} key={each.id} />
-               
                 </Link>
             ))}
             </ul>
-          
-           
-
-      
     )
 
 }
-
-  
-
-
 export default SideContainer;

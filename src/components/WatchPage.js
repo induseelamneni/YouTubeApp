@@ -1,10 +1,7 @@
-import { useEffect } from "react"
-import {useDispatch} from "react-redux"
-import { closeMenu } from "../utils/appSlice"
 import {useSearchParams} from "react-router-dom"
-import SideContainer from "./SideContainer"
 import { PERSON_ICON } from "../utils/constants"
 import LiveChat from "./LiveChat"
+import SideBar from "./SideBar"
 
 const commentsData = [
     {
@@ -92,28 +89,26 @@ const CommentsList = ({ comments } ) => {
     
 
 const WatchPage = () => {
-    const [searchParamas] = useSearchParams()
-    // console.log(searchParamas.get("v"))
-
-    const dispatch = useDispatch()
-     
-
-    useEffect(() => {
-        dispatch(closeMenu())
-    },[])
+    const [searchParamas] = useSearchParams()    
 
     return (
-        <div className="p-4 align-middle flex flex-row pt-[6rem] w-full">
-            <div>
-            <iframe width="1280" height="700" src={"https://www.youtube.com/embed/"+searchParamas.get("v")} title="My Brother In Law’s Vratham Lunch || Delicious Vegetarian Meal || Infinity Platter || 2022" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+        <>
+        {/* <div className="p-4 align-middle flex flex-row pt-[6rem] w-full"> */}
+        <div className="flex flex-row">
+            <SideBar/>
+            {/* <div className="pl-4 align-middle pt-[6rem]"> */}
+        <div className="p-2 w-[80%] pl-[12rem]  align-middle pt-[8rem]" >
+
+            <iframe width="1200" height="600" src={"https://www.youtube.com/embed/"+searchParamas.get("v")} title="My Brother In Law’s Vratham Lunch || Delicious Vegetarian Meal || Infinity Platter || 2022" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
             <div>
             <CommentsList  comments = {commentsData}/>
               
             </div>
             </div>
             
-            <LiveChat className="m-3 p-3"/>
+            <LiveChat className="m-3 p-3 pt-[8rem]"/>
         </div>
+        </>
     )
 }
 

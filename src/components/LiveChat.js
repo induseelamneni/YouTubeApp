@@ -51,16 +51,11 @@ const LiveChat = () => {
     
 
     return (
-        <div className="flex flex-col w-[100%] h-[1500px]">
+        <div className="flex flex-col  h-[2100px] pt-[8rem]">
     <div  className=" border border-black-200 shadow-slate-lg border-rouded-lg bg-white-500 m-2 overflow-y-scroll flex flex-col-reverse">
         {chatmessages.map((e,i) => (
              <IndividualChat name={e.name} message={e.message} key={i}/>
-
-
         ))}
-
-    
-
     </div>
     <form className="border border-black w-[100%]" onSubmit={(e)=> 
     {
@@ -79,8 +74,6 @@ const LiveChat = () => {
             }} 
             value={liveMsg} name="chatmsg" type="input"/>
         <button className="text-blue" type="submit">Submit</button>
-
-
     </form>
     </div>
     )
@@ -88,5 +81,3 @@ const LiveChat = () => {
 }
 
 export default LiveChat
-
-// className=" border border-black shadow-slate-lg border-rouded-lg bg-gray-200 h-7"
