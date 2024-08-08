@@ -33,12 +33,8 @@ const Header = () => {
                 setSearchResults(searchCache[searchQuery])
             }else{
                 getSearchApi()
-
             }
-            
         }, 200);
-        
-
         return () => {
             clearTimeout(timer)
         } 
